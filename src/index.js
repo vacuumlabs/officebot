@@ -16,9 +16,11 @@ import {init as initSlack} from './slack'
 
   app.use('/actions', slackClient.interactionsMiddleware())
 
-  app.listen(c.port, () =>
+  app.listen(c.port, () => {
     logger.log('info', `App started on localhost:${c.port}.`)
-  )
+    // eslint-disable-next-line no-console
+    console.log('App ready')
+  })
 })().catch((e) => {
   logger.log('error', e)
   process.exit(1)
